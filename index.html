@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculate pipe cost</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="jquery.chained.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="body">
+            <div class="wrapper">
+                <div id="npm">
+                        Product
+                        <br />
+                        <select id="class" name="class" form="pipeCal">
+                          <option value="">Class</option>
+                          <option value="np2">NP2</option>
+                          <option value="np3">NP3</option>
+                          <option value="np4">NP4</option>
+                          <option value="np4v">NP4(Vertical Casting)</option>
+                        </select>
+                        <select id="subclass" name="subclass">
+                          <option value="">Subclass</option>
+                          <option value="227.7875,0.07" class="np2" id="a">150</option>
+                          <option value="323.9145,0.11" class="np2" id="a">250</option>
+                          <option value="566.0905,0.19" class="np2" id="a">300</option>
+                          <option value="976.8245,0.33" class="np2" id="a">450</option>
+                          <option value="1624.367,0.56" class="np2" id="a">600</option>
+                          <option value="2549.404,0.82" class="np2" id="a">800</option>
+                          <option value="3217.7595,1.01" class="np2" id="a">900</option>
+                          <option value="3873.8145,1.22" class="np2" id="a">1000</option>
+                          <option value="5397.4435,1.71" class="np2" id="a">1200</option>
+                          <option value="820.302,0.26" class="np3" id="a">300</option>
+                          <option value="2084.4115,0.76" class="np3" id="a">450</option>
+                          <option value="3225.6315,1.2" class="np3" id="a">600</option>
+                          <option value="5083.861,1.64" class="np3" id="a">800</option>
+                          <option value="6234.625,1.92" class="np3" id="a">900</option>
+                          <option value="7728.696,2.47" class="np3" id="a">1000</option>
+                          <option value="10258.501,3.05" class="np3" id="a">1200</option>
+                          <option value="9450.696,2.47" class="np4" id="a">1000</option>
+                          <option value="12457.301,3.05" class="np4" id="a">1200</option>
+                          <option value="9099.496,2.47" class="np4v" id="a">1000</option>
+                          <option value="12066.05,3.05" class="np4v" id="a">1200</option>
+                        </select>
+                    </div>
+                
+                    
+                    <div class="dist">
+                        Distance <br/>
+                        <input type="text" name="distance" id="b">
+                    </div>
+                 <input type="button" value="Calculate!" onclick="calculate();">
+              
+                
+            </div>
+            <div class="result"></div>
+        </div>
+        <script>
+            $( document ).ready(function() {
+                $("#subclass").chained("#class"); 
+            });
+            
+            function calculate() {
+                var dist=document.getElementById("b").value;
+                var a = document.getElementById("subclass");
+                var val=a.options[subclass.selectedIndex].value;
+                var prod=a.options[subclass.selectedIndex].text;
+                var array = val.split(',');
+ 
+                var npm= parseFloat(array[0]);
+                var weight= parseFloat(array[1]);
+    
+                if (prod<=800) {
+                var cost=(dist*5.5*weight);
+                var final=cost+npm;
+                $(".result").append("<div class='final'> Final result is: "+final+"</div>");
+                $(".result").append("<div class='details'><br />Carting: "+cost+"<br />Cost of pipe: "+npm+"</div>");
+                }
+                else if(prod>800){
+                    var cost=(dist*7.8*weight);
+                    var final=cost+npm;
+                    $(".result").append("<div class='final'> Final result is: "+final+"</div>");
+                    $(".result").append("<div class='details'><br />Carting: "+cost+"<br />Cost of pipe:"+npm+"</div>");
+                }
+                else{
+                    $(".result").append(" Error");
+                }
+            }
+            
+        </script>
+    </body>
+</html>
