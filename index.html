@@ -32,7 +32,7 @@
                           <option value="5397.4435,1.71" class="np2" id="a">1200</option>
                           <option value="820.302,0.26" class="np3" id="a">300</option>
                           <option value="2084.4115,0.76" class="np3" id="a">450</option>
-                          <option value="3225.6315,1.2" class="np3" id="a">600</option>
+                          <option value="3225.6315,1.12" class="np3" id="a">600</option>
                           <option value="5083.861,1.64" class="np3" id="a">800</option>
                           <option value="6234.625,1.92" class="np3" id="a">900</option>
                           <option value="7728.696,2.47" class="np3" id="a">1000</option>
@@ -71,16 +71,16 @@
                 var weight= parseFloat(array[1]);
     
                 if (prod<=800) {
-                var cost=(dist*5.5*weight);
+                var cost=(dist*2.6*weight);
                 var final=cost+npm;
-                $(".result").append("<div class='final'> Final result is: "+final+"</div>");
+                $(".result").append("<div class='final'> Total: "+final+"</div>");
                 $(".result").append("<div class='details'><br />Carting: "+cost+"<br />Cost of pipe: "+npm+"</div>");
                 }
                 else if(prod>800){
-                    var cost=(dist*7.8*weight);
+                    var cost=(dist*3.25*weight);
                     var final=cost+npm;
-                    $(".result").append("<div class='final'> Final result is: "+final+"</div>");
-                    $(".result").append("<div class='details'><br />Carting: "+cost+"<br />Cost of pipe:"+npm+"</div>");
+                    $(".result").append("<div class='final'> Total: "+final+"</div>");
+                    $(".result").append("<div class='details'><br />Carting: "+cost+"<br />Cost of pipe: "+npm+"</div>");
                 }
                 else{
                     $(".result").append(" Error");
